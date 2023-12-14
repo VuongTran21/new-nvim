@@ -1,11 +1,8 @@
 return {
-	"catppuccin/nvim",
+	"ellisonleao/gruvbox.nvim",
 	lazy = false,
 	prioty = 999,
 	config = function()
-		vim.cmd("colorscheme catppuccin-latte")
-		require("catppuccin").setup({
-      flavour = "latte"
-    })
+		vim.cmd("colorscheme gruvbox")
 	end,
 }

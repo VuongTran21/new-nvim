@@ -1,5 +1,3 @@
-local mapvimkey = require("util.keymapper").mapvimkey
-
 local config = function()
 	local telescope = require("telescope")
 	telescope.setup({
@@ -35,9 +33,4 @@ return {
 	lazy = false,
 	dependencies = { "nvim-lua/plenary.nvim" },
 	config = config,
-	keys = {
-		mapvimkey("<leader>pf", "Telescope find_files", "n"),
-		mapvimkey("<leader>pg", "Telescope live_grep", "n"),
-		mapvimkey("<leader>pb", "Telescope buffers", "n"),
-	},
 }

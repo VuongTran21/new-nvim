@@ -1,21 +1,61 @@
-local keymap = vim.keymap
-local opts = {noremap = true, silent = true}
+local Remap = require("util.keymapper").M
+local nnoremap = Remap.nnoremap
+local vnoremap = Remap.vnoremap
+local xnoremap = Remap.xnoremap
+local nmap = Remap.nmap
+local opts = { noremap = true, silent = true }
 
 -- Directory navigation
-keymap.set("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
-keymap.set("n", "<leader>b", ":NvimTreeFindFile<CR>", opts)
+nnoremap("<leader>e", ":NvimTreeToggle<CR>", opts)
+nnoremap("<leader>b", ":NvimTreeFindFile<CR>", opts)
 
 -- Pane navigation
-keymap.set("n", "<C-h>", "<C-w>h", opts)
-keymap.set("n", "<C-l>", "<C-w>l", opts)
-keymap.set("n", "<C-j>", "<C-w>j", opts)
-keymap.set("n", "<C-k>", "<C-w>k", opts)
+nnoremap("<C-h>", "<C-w>h", opts)
+nnoremap("<C-j>", "<C-w>j", opts)
+nnoremap("<C-k>", "<C-w>k", opts)
+nnoremap("<C-l>", "<C-w>l", opts)
 
--- Window Management
-keymap.set("n", "<leader>sv", ":vsplit<CR>", opts) -- split vertically
-keymap.set("n", "<leader>sh", ":split<CR>", opts) -- split horizontally
-keymap.set("n", "<leader>sm", ":MazimizerToggle<CR>", opts) -- split horizontally
+-- Window management
+nnoremap("<leader>sv", ":vsplit", opts) -- vertically
+nnoremap("<leader>sh", ":split", opts) -- horizontally
+nnoremap("<leader>sm", ":MazimizerToggle<CR>", opts) -- Mazimizer
+nnoremap("<leader>sx", ":close<CR>", opts) -- close current split window
+nnoremap("<leader>se", "<C-w>=", opts) -- make splitted window equal width and height
 
--- Indenting
-keymap.set("v", "<", "<gv")
-keymap.set("v", ">", ">gv")
+-- Moving, indent text around
+vnoremap("J", ":m '>+1<CR>gv=gv")
+vnoremap("K", ":m '<-2<CR>gv=gv")
+vnoremap("<", "<gv", { noremap = true, silent = false })
+vnoremap(">", ">gv", { noremap = true, silent = false })
+
+-- delete single character without copying into register
+nnoremap("x", '"_x')
+
+-- greatest remap ever from ThePrimagen
+xnoremap("<leader>p", '"_dP')
+nnoremap("<leader>y", '"+y')
+vnoremap("<leader>y", '"+y')
+nmap("<leader>Y", '"+Y')
+nnoremap("<leader>d", '"_d')
+vnoremap("<leader>d", '"_d')
+
+-- telescope
+nnoremap("<leader>ps", "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For >') })<CR>")
+nnoremap("<leader>pf", "<cmd>lua require('telescope.builtin').find_files({ hidden = false })<CR>")
+nnoremap("<leader>pf", "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<CR>")
+nnoremap("<leader>pw", "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.expand('<cword>') })<CR>")
+nnoremap("<leader>pb", "<cmd>lua require('telescope.builtin').buffers()<CR>")
+nnoremap("<leader>vh", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
+nnoremap("<C-p>", "<cmd>lua require('telescope.builtin').git_files()<CR>")
+
+nnoremap("<leader>gc", "<cmd>Telescope git_commits<CR>")
+nnoremap("<leader>gfc", "<cmd>Telescope git_bcommits<CR>")
+nnoremap("<leader>gb", "<cmd>Telescope git_branches<CR>")
+nnoremap("<leader>gs", "<cmd>Telescope git_status<CR>")
+
+-- gitsigns
+nnoremap("<leader>grh", "<cmd>Gitsigns reset_hunk<CR>")
+
+-- search and ready to replace all the matching words in curren buffer
+nnoremap("<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
+
