@@ -2,6 +2,7 @@ local Remap = require("util.keymapper").M
 local nnoremap = Remap.nnoremap
 local vnoremap = Remap.vnoremap
 local xnoremap = Remap.xnoremap
+local tnoremap = Remap.tnoremap
 local nmap = Remap.nmap
 local opts = { noremap = true, silent = true }
 
@@ -9,11 +10,21 @@ local opts = { noremap = true, silent = true }
 nnoremap("<leader>e", ":NvimTreeToggle<CR>", opts)
 nnoremap("<leader>b", ":NvimTreeFindFile<CR>", opts)
 
--- Pane navigation
+-- Window & Pane navigation
 nnoremap("<C-h>", "<C-w>h", opts)
 nnoremap("<C-j>", "<C-w>j", opts)
 nnoremap("<C-k>", "<C-w>k", opts)
 nnoremap("<C-l>", "<C-w>l", opts)
+
+tnoremap("<C-h>", "wincmd h", opts) -- Navigate Left
+tnoremap("<C-j>", "wincmd j", opts) -- Navigate Down
+tnoremap("<C-k>", "wincmd k", opts) -- Navigate Up
+tnoremap("<C-l>", "wincmd l", opts) -- Navigate Right
+
+tnoremap("<C-h>", "TmuxNavigateLeft", opts) -- Navigate Left
+tnoremap("<C-j>", "TmuxNavigateDown", opts) -- Navigate Down
+tnoremap("<C-k>", "TmuxNavigateUp", opts) -- Navigate Up
+tnoremap("<C-l>", "TmuxNavigateRight", opts) -- Navigate Right
 
 -- Window management
 nnoremap("<leader>sv", ":vsplit", opts) -- vertically
@@ -58,4 +69,3 @@ nnoremap("<leader>grh", "<cmd>Gitsigns reset_hunk<CR>")
 
 -- search and ready to replace all the matching words in curren buffer
 nnoremap("<leader>s", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>")
-

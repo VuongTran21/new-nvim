@@ -2,6 +2,7 @@ local vim_modes = {
 	n = "n",
 	i = "i",
 	v = "v",
+	t = "t",
 }
 
 local default_opts = {
@@ -77,6 +78,7 @@ M.nnoremap = bind("n")
 M.vnoremap = bind("v")
 M.inoremap = bind("i")
 M.xnoremap = bind("x")
+M.tnoremap = bind("t")
 
 return {
 	mapvimkey = mapvimkey,
