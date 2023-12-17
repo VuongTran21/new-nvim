@@ -53,7 +53,7 @@ vnoremap("<leader>d", '"_d')
 -- telescope
 nnoremap("<leader>ps", "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For >') })<CR>")
 nnoremap("<leader>pf", "<cmd>lua require('telescope.builtin').find_files({ hidden = false })<CR>")
-nnoremap("<leader>pf", "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<CR>")
+nnoremap("<leader>ph", "<cmd>lua require('telescope.builtin').find_files({ hidden = true })<CR>")
 nnoremap("<leader>pw", "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.expand('<cword>') })<CR>")
 nnoremap("<leader>pb", "<cmd>lua require('telescope.builtin').buffers()<CR>")
 nnoremap("<leader>vh", "<cmd>lua require('telescope.builtin').help_tags()<CR>")
