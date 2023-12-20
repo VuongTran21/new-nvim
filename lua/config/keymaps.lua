@@ -50,6 +50,13 @@ nmap("<leader>Y", '"+Y')
 nnoremap("<leader>d", '"_d')
 vnoremap("<leader>d", '"_d')
 
+nnoremap("<leader>q", ":q!<CR>")
+nnoremap("<leader>Q", ":wq<CR>")
+nnoremap("<leader>w", ":w<CR>")
+nnoremap("<leader>x", ":bdelete<CR>")
+
+nnoremap("<leader>lf", "<cmd>lua vim.lsp.buf.format({ name = 'efm', async = true })<CR>", opts)
+
 -- telescope
 nnoremap("<leader>ps", "<cmd>lua require('telescope.builtin').grep_string({ search = vim.fn.input('Grep For >') })<CR>")
 nnoremap("<leader>pf", "<cmd>lua require('telescope.builtin').find_files({ hidden = false })<CR>")

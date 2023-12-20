@@ -12,6 +12,10 @@ local config = function()
 		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 	end
 
+	local handle_lsp = function(opts)
+		return opts
+	end
+
 	-- lua
 	lspconfig.lua_ls.setup({
 		capabilities = capabilities,
@@ -64,7 +68,7 @@ local config = function()
 		filetypes = {
 			"typescript",
 		},
-		root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", ".git"),
+		root_dir = lspconfig.util.root_pattern("tsconfig.json", "package.json", ".git"),
 	})
 
 	-- bash
@@ -115,6 +119,11 @@ local config = function()
 		},
 	})
 
+	-- lspconfig.eslint.setup(handle_lsp({
+	-- 	root_dir = lspconfig.util.root_pattern("yarn.lock", "lerna.json", ".git"),
+	-- 	on_attach = on_attach,
+	-- }))
+
 	local luacheck = require("efmls-configs.linters.luacheck")
 	local stylua = require("efmls-configs.formatters.stylua")
 	local flake8 = require("efmls-configs.linters.flake8")
@@ -164,8 +173,8 @@ local config = function()
 				lua = { luacheck, stylua },
 				python = { flake8, black },
 				typescript = { eslint, prettier_d },
-				json = { eslint, fixjson },
-				jsonc = { eslint, fixjson },
+				json = { fixjson },
+				jsonc = { fixjson },
 				sh = { shellcheck, shfmt },
 				javascript = { eslint, prettier_d },
 				javascriptreact = { eslint, prettier_d },
