@@ -1,5 +1,5 @@
 return {
-	"glepnir/lspsaga.nvim",
+	"nvimdev/lspsaga.nvim",
 	lazy = false,
 	config = function()
 		require("lspsaga").setup({
@@ -17,5 +17,6 @@ return {
 	end,
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",
+		"nvim-tree/nvim-web-devicons",
 	},
 }

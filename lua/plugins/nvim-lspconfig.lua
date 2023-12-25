@@ -67,6 +67,16 @@ local config = function()
 		capabilities = capabilities,
 		filetypes = {
 			"typescript",
+			"typescriptreact",
+			"javascriptreact",
+			"javascript",
+			"css",
+			"sass",
+			"scss",
+			"less",
+			"svelte",
+			"vue",
+			"html",
 		},
 		root_dir = lspconfig.util.root_pattern("tsconfig.json", "package.json", ".git"),
 	})
